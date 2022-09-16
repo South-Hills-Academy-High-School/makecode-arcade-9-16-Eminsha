@@ -34,7 +34,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
             . . . . . . 3 3 3 3 3 3 3 3 3 3 
             . . . . . . 3 3 3 3 3 3 3 3 3 3 
             `, SpriteKind.Player))
-        snakebody[0].setPosition(foodx - updatevx * 10, foody - updatevy * 10)
+        snakebody[0].setPosition(foodx - (updatevx * 10 - 2), foody - (updatevy * 10 - 2))
         foodx = randint(0, 15) * 10
         foody = randint(0, 11) * 10
     }
@@ -57,16 +57,16 @@ let snakehead = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    . . . . . . 3 3 3 3 3 3 3 3 3 3 
-    . . . . . . 3 3 3 3 3 3 3 3 3 3 
-    . . . . . . 3 3 3 3 3 3 3 3 3 3 
-    . . . . . . 3 3 3 3 3 3 3 3 3 3 
-    . . . . . . 3 3 3 3 3 3 3 3 3 3 
-    . . . . . . 3 3 3 3 3 3 3 3 3 3 
-    . . . . . . 3 3 3 3 3 3 3 3 3 3 
-    . . . . . . 3 3 3 3 3 3 3 3 3 3 
-    . . . . . . 3 3 3 3 3 3 3 3 3 3 
-    . . . . . . 3 3 3 3 3 3 3 3 3 3 
+    . . . . . . 7 7 7 7 7 7 7 7 7 7 
+    . . . . . . 7 7 7 7 7 7 7 7 7 7 
+    . . . . . . 7 f f f 7 7 f f f 7 
+    . . . . . . 7 7 7 7 7 7 7 7 7 7 
+    . . . . . . 7 f f f 7 7 f f f 7 
+    . . . . . . 7 7 7 7 7 7 7 7 7 7 
+    . . . . . . 7 f f f f f f f f 7 
+    . . . . . . 7 f 3 3 2 2 3 3 f 7 
+    . . . . . . 7 7 f f 2 2 f f 7 7 
+    . . . . . . 7 7 7 7 2 2 7 7 7 7 
     `, SpriteKind.Player)
 let snakefood = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -114,8 +114,8 @@ game.onUpdate(function () {
             . . . . . . 3 3 3 3 3 3 3 3 3 3 
             . . . . . . 3 3 3 3 3 3 3 3 3 3 
             `, SpriteKind.Player))
-        snakebody[0].setPosition(snakeheadx, snakeheady)
-        snakebody.pop()
+        snakebody[0].setPosition(snakeheadx + 2, snakeheady + 2)
+        snakebody.pop().destroy()
         updatevx = vx
         updatevy = vy
         atefoodflag = 0
